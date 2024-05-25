@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="5;url=null" id="refreshMeta">
+    <title>SteamLinks</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            function getQueryParams() {
+                const params = {};
+                window.location.search.substring(1).split("&").forEach(pair => {
+                    const [key, value] = pair.split("=");
+                    params[decodeURIComponent(key)] = decodeURIComponent(value);
+                });
+                return params;
+            }
+
+            const queryParams = getQueryParams();
+            const refreshUrl = queryParams['refresh'];
+
+            if (refreshUrl) {
+                const metaTag = document.getElementById('refreshMeta');
+                metaTag.setAttribute('content', '5;url=' + refreshUrl);
+            }
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>
